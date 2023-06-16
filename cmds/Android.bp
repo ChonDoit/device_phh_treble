@@ -277,6 +277,9 @@ cc_binary {
 		"libutils",
 		"libhidlbase",
 	],
+	init_rc: [
+		"slsi-booted.rc"
+	],
 }
 
 cc_binary {
