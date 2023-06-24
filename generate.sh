@@ -54,7 +54,6 @@ for part in a ab;do
 				su_suffix='N'
 				if [ "$su" == "yes" ];then
 					su_suffix='S'
-					extra_packages+=' phh-su me.phh.superuser'
 				fi
 
 				part_suffix='a'

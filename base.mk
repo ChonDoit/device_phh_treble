@@ -1,3 +1,8 @@
+# Call for Secure build
+$(call inherit-product, device/phh/treble/secure.mk)
+
+PHH-SECURE_BUILD ?= false
+
 #Huawei devices don't declare fingerprint and telephony hardware feature
 #TODO: Proper detection
 PRODUCT_COPY_FILES := \
@@ -176,8 +181,7 @@ PRODUCT_PACKAGES += \
 	resetprop_phh
 
 PRODUCT_COPY_FILES += \
-	device/phh/treble/phh-securize.sh:system/bin/phh-securize.sh \
-	device/phh/treble/files/ota.sh:system/bin/ota.sh \
+	device/phh/treble/files/ota.sh:system/bin/ota.sh
 
 PRODUCT_COPY_FILES += \
 	device/phh/treble/remove-telephony.sh:system/bin/remove-telephony.sh \
