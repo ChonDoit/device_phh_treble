@@ -283,6 +283,18 @@ cc_binary {
 }
 
 cc_binary {
+	name: "mtk-power",
+	srcs: [
+		"mtk-power.cpp",
+	],
+	shared_libs: [
+		"vendor.mediatek.hardware.mtkpower@1.0",
+		"libutils",
+		"libhidlbase",
+	],
+}
+
+cc_binary {
 	name: "evgrab",
 	srcs: [
 		"evgrab.cpp",
