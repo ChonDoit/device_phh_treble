@@ -244,9 +244,5 @@ include build/make/target/product/gsi_release.mk
 PRODUCT_COPY_FILES += \
 	device/phh/treble/files/com.android.deskclock_whitelist.xml:system/etc/sysconfig/com.android.deskclock_whitelist.xml
 
-# QCOM in-call audio fix as a standalone app
-PRODUCT_PACKAGES += \
-    QcRilAm
-
 PRODUCT_PACKAGES += \
 	slsi-booted
