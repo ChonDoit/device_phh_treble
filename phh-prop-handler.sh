@@ -251,8 +251,8 @@ if [ "$1" == "persist.bluetooth.system_audio_hal.enabled" ]; then
         resetprop_phh ro.bluetooth.a2dp_offload.supported false
     else
         resetprop_phh --delete persist.bluetooth.bluetooth_audio_hal.disabled
-        resetprop_phh --delete persist.bluetooth.a2dp_offload.disabled
-        resetprop_phh --delete ro.bluetooth.a2dp_offload.supported
+        resetprop_phh persist.bluetooth.a2dp_offload.disabled
+        resetprop_phh ro.bluetooth.a2dp_offload.supported
     fi
     restartAudio
     exit
