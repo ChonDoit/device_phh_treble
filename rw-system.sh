@@ -77,9 +77,16 @@ fixSPL() {
     [ -z "$img" ] && img="$(find /dev/block -type l -iname boot"$(getprop ro.boot.slot_suffix)" | grep by-name | head -n 1)"
     if [ -n "$img" ]; then
         #Rewrite SPL/Android version if needed
-        Arelease="$(getSPL "$img" android)"
+	vbmetaArelease="$(strings -n 2 /dev/block/by-name/vbmeta* | grep -A1 com.android.build.system.os_version | grep -E '^[0-9]+$' | sort -n | head -n1)"
         spl="$(getSPL "$img" spl)"
-        setprop ro.keymaster.xxx.release "$Arelease"
+	if [ -n "${vbMetaArelease}" ]; then
+		# use os-release value from vbmeta
+	        setprop ro.keymaster.xxx.release "${vbmetaArelease}"
+	else
+		# fallback to os-release from SPL if vbmeta os-release not available
+		bootArelease="$(getSPL "$img" android)"
+		setprop ro.keymaster.xxx.release "${bootArelease}"
+	fi
         setprop ro.keymaster.xxx.security_patch "$spl"
 	if [ -z "$Arelease" ] || [ -z "$spl" ];then
 		return 0
