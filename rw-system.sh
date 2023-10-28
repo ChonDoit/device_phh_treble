@@ -76,18 +76,14 @@ fixSPL() {
     img="$(find /dev/block -type l -iname kernel"$(getprop ro.boot.slot_suffix)" | grep by-name | head -n 1)"
     [ -z "$img" ] && img="$(find /dev/block -type l -iname boot"$(getprop ro.boot.slot_suffix)" | grep by-name | head -n 1)"
     if [ -n "$img" ]; then
-        #Rewrite SPL/Android version if needed
-	vbmetaArelease="$(strings -n 2 /dev/block/by-name/vbmeta* | grep -A1 com.android.build.system.os_version | grep -E '^[0-9]+$' | sort -n | head -n1)"
-        spl="$(getSPL "$img" spl)"
-	if [ -n "${vbMetaArelease}" ]; then
-		# use os-release value from vbmeta
-	        setprop ro.keymaster.xxx.release "${vbmetaArelease}"
-	else
-		# fallback to os-release from SPL if vbmeta os-release not available
-		bootArelease="$(getSPL "$img" android)"
-		setprop ro.keymaster.xxx.release "${bootArelease}"
-	fi
-        setprop ro.keymaster.xxx.security_patch "$spl"
+    #Rewrite SPL/Android version if needed
+    # Read Android version from vbmeta (often trustkernel's root of trust)
+    Arelease="$(strings -n 2 /dev/block/by-name/vbmeta* | grep -A1 com.android.build.system.os_version | grep -E '^[0-9]+$' | sort -n | head -n1)"
+    # Otherwise read it from boot.img
+    [ -z "$Arelease" ] && Arelease="$(getSPL "$img" android)"
+    spl="$(getSPL "$img" spl)"
+    setprop ro.keymaster.xxx.release "${Arelease}"
+    setprop ro.keymaster.xxx.security_patch "$spl"
 	if [ -z "$Arelease" ] || [ -z "$spl" ];then
 		return 0
 	fi
