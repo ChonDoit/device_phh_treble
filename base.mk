@@ -263,7 +263,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     slsi-booted \
     Iwlan \
-    QualifiedNetworksService
+    QualifiedNetworksService \
+    MtkInCallService
 
 # Two-pane layout in Settings
 PRODUCT_PACKAGES += \
