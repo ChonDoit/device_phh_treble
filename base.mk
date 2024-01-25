@@ -263,6 +263,3 @@ PRODUCT_PACKAGES += \
     QualifiedNetworksService \
     MtkInCallService
 
-# Two-pane layout in Settings
-PRODUCT_PACKAGES += \
-    androidx.window.extensions
