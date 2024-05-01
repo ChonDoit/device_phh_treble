@@ -823,7 +823,7 @@ resetprop_phh ro.boot.veritymode enforcing
 resetprop_phh ro.boot.warranty_bit 0
 resetprop_phh ro.warranty_bit 0
 resetprop_phh ro.build.type user
-resetprop_phh ro.build.selinux 0
+resetprop_phh --delete ro.build.selinux
 
 for abi in "" 64;do
     f=/vendor/lib$abi/libstagefright_foundation.so
