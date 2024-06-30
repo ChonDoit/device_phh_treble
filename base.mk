@@ -127,7 +127,7 @@ PRODUCT_COPY_FILES += \
 	device/phh/treble/files/oneplus6-synaptics_s3320.kl:system/phh/oneplus6-synaptics_s3320.kl \
 	device/phh/treble/files/huawei-fingerprint.kl:system/phh/huawei/fingerprint.kl \
 	device/phh/treble/files/samsung-sec_e-pen.idc:system/usr/idc/sec_e-pen.idc \
-	device/phh/treble/files/samsung-9810-floating_feature.xml:system/ph/sam-9810-flo_feat.xml \
+	device/phh/treble/files/samsung-9810-floating_feature.xml:system/phh/sam-9810-flo_feat.xml \
 	device/phh/treble/files/mimix3-gpio-keys.kl:system/phh/mimix3-gpio-keys.kl \
 	device/phh/treble/files/nokia-soc_gpio_keys.kl:system/phh/nokia-soc_gpio_keys.kl \
 	device/phh/treble/files/lenovo-synaptics_dsx.kl:system/phh/lenovo-synaptics_dsx.kl \
