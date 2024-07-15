@@ -13,7 +13,7 @@ rm /system/bin/phh-root.sh
 rm -rf /system/priv-app/SuperUser
 rm /system/bin/phh-securize.sh
 rm -rf /data/su || true
-mount -o rw,remount /
+mount -o ro,remount /
 sync
 reboot
 
