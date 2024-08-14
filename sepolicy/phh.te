@@ -9,7 +9,7 @@ allow phhsu_daemon gsi_data_file:file ioctl;
 allowxperm phhsu_daemon gsi_data_file:file ioctl { 0x660b };
 
 allow phhsu_daemon loop_device:blk_file ioctl;
-allowxperm phhsu_daemon loop_device:blk_file ioctl { 0x4c00 };
+allowxperm phhsu_daemon loop_device:blk_file ioctl { 0x4c00 0x4c01 };
 
 allow phhsu_daemon userdata_block_device:blk_file ioctl;
 allowxperm phhsu_daemon userdata_block_device:blk_file ioctl { 0x1278 0x127a };
