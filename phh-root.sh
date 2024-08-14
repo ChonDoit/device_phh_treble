@@ -15,21 +15,23 @@ prop_value=$(getprop "$1")
 
 phhroot() {
 	blockdev --setrw /dev/block/mapper/system
-	mount -o rw,remount /
+	mount -o rw, remount /
 	touch /system/xbin/su || true
 	pm enable me.phh.superuser
 	mount /system/bin/phh-su /system/xbin/su
 	start sudaemon
+	sync
 }
 
 phhnoroot() {
 	blockdev --setrw /dev/block/mapper/system
-	mount -o rw,remount /
+	mount -o rw, remount /
 	stop sudaemon
 	rm -rf /data/su || true
 	umount /system/xbin/su
 	rm -rf /system/xbin/su
 	pm disable me.phh.superuser
+	sync
 }
 
 if [ "$1" == "persist.sys.phh.dynamic_superuser" ]; then

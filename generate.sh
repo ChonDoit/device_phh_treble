@@ -40,12 +40,7 @@ for part in a ab;do
 					su_suffix='S'
 				fi
 
-				part_suffix='a'
-				if [ "$part" == 'ab' ];then
-					part_suffix='b'
-				else
-					optional_base='$(call inherit-product, device/phh/treble/base-sas.mk)'
-				fi
+				part_suffix='b'
 
 				target="treble_${arch}_${part_suffix}${apps_suffix}${su_suffix}"
 
@@ -63,7 +58,6 @@ for part in a ab;do
 TARGET_GAPPS_ARCH := ${baseArch}
 include build/make/target/product/aosp_${baseArch}.mk
 \$(call inherit-product, device/phh/treble/base.mk)
-$optional_base
 $rom_script
 
 PRODUCT_NAME := $target

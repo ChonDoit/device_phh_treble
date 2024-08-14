@@ -1,7 +1,7 @@
 #!/system/bin/sh
 
 # Remove bind-mount of phh-su
-mount -o rw,remount /
+mount -o rw, remount /
 umount -l /system/xbin/su
 umount -l /system/bin/magisk
 
@@ -13,7 +13,7 @@ rm /system/bin/phh-root.sh
 rm -rf /system/priv-app/SuperUser
 rm /system/bin/phh-securize.sh
 rm -rf /data/su || true
-mount -o ro,remount /
+mount -o ro, remount /
 sync
 reboot
 
