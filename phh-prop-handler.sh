@@ -281,3 +281,22 @@ if [ "$1" == "persist.bluetooth.system_audio_hal.enabled" ]; then
     restartAudio
     exit
 fi
+
+if [ "$1" == "persist.sys.phh.two_pane_layout" ];then
+    if [[ "$prop_value" != "false" && "$prop_value" != "true" ]]; then
+        exit 1
+    fi
+
+    if [[ "$prop_value" == false ]];then
+        mount /system/phh/empty /system/system_ext/framework/androidx.window.extensions.jar
+        mount /system/phh/empty /system/system_ext/framework/androidx.window.sidecar.jar
+        resetprop_phh persist.wm.extensions.enabled false
+        resetprop_phh persist.settings.large_screen_opt.enabled false
+    else
+        umount /system/system_ext/framework/androidx.window.extensions.jar
+        umount /system/system_ext/framework/androidx.window.sidecar.jar
+        resetprop_phh persist.wm.extensions.enabled true
+        resetprop_phh persist.settings.large_screen_opt.enabled true
+    fi
+    exit
+fi
