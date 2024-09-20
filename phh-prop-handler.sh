@@ -300,3 +300,14 @@ if [ "$1" == "persist.sys.phh.two_pane_layout" ];then
     fi
     exit
 fi
+
+if [ "$1" == "persist.sys.spoof.auto_update" ];then
+    if [[ "$prop_value" != "false" && "$prop_value" != "true" ]]; then
+        exit 1
+    fi
+
+    if [[ "$prop_value" == true ]];then
+        curl -s https://raw.githubusercontent.com/ChonDoit/device_phh_treble/14/spoof_props.sh | sh
+    fi
+    exit
+fi
