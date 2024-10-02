@@ -311,3 +311,26 @@ if [ "$1" == "persist.sys.spoof.auto_update" ];then
     fi
     exit
 fi
+
+if [ "$1" == "persist.sys.phh.debuggable" ];then
+    if [[ "$prop_value" != "false" && "$prop_value" != "true" ]]; then
+        exit 1
+    fi
+
+    if [[ "$prop_value" == true ]];then
+        resetprop_phh ro.debuggable 1
+        resetprop_phh ro.adb.secure 0
+        resetprop_phh ro.secure 0
+        resetprop_phh ro.force.debuggable 1
+        settings put global adb_enabled 1
+    else
+        resetprop_phh ro.debuggable 0
+        resetprop_phh ro.adb.secure 1
+        resetprop_phh ro.secure 1
+        resetprop_phh ro.force.debuggable 0
+        settings put global adb_enabled 0
+        setprop ctl.stop adbd
+    fi
+    exit
+fi
+

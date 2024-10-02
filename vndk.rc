@@ -116,6 +116,9 @@ on property:persist.sys.phh.two_pane_layout=*
 on property:persist.sys.spoof.auto_update=*
     exec u:r:phhsu_daemon:s0 root -- /system/bin/phh-prop-handler.sh "persist.sys.spoof.auto_update"
 
+on property:persist.sys.phh.debuggable=*
+    exec u:r:phhsu_daemon:s0 root -- /system/bin/phh-prop-handler.sh "persist.sys.phh.debuggable"
+
 # Set watchdog timer to 30 seconds and pet it every 10 seconds to get a 20 second margin
 service watchdogd-gsi /system/bin/watchdogd 10 20
     class core
