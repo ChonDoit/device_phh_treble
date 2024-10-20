@@ -2,6 +2,7 @@ ifeq ($(PHH-SECURE_BUILD), true)
     BOARD_EXT4_SHARE_DUP_BLOCKS := true
     LOCAL_OVERRIDES_PACKAGES := su
         else
+    BOARD_EXT4_SHARE_DUP_BLOCKS := false
     PRODUCT_PACKAGES += phh-su SuperUser
     PRODUCT_COPY_FILES += \
         device/phh/treble/phh-root.sh:system/bin/phh-root.sh \
