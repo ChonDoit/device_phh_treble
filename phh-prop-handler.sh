@@ -375,17 +375,20 @@ if [ "$1" == "persist.sys.phh.sf.background_blur" ];then
     fi
 
     if [[ "$prop_value" == disabled ]];then
-	resetprop_phh ro.surface_flinger.supports.background_blur false
-	resetprop_phh debug.renderengine.blur_algorithm
+	resetprop_phh ro.surface_flinger.supports_background_blur 0
+	settings put global disable_window_blurs 1
+	resetprop_phh --delete debug.renderengine.blur_algorithm
     fi
 
     if [[ "$prop_value" == gaussian ]];then
-	resetprop_phh ro.surface_flinger.supports.background_blur true
+	resetprop_phh ro.surface_flinger.supports_background_blur 1
+	settings put global disable_window_blurs 0
         resetprop_phh debug.renderengine.blur_algorithm gaussian
     fi
 
     if [[ "$prop_value" == kawase ]];then
-	resetprop_phh ro.surface_flinger.supports.background_blur true
+	resetprop_phh ro.surface_flinger.supports_background_blur 1
+	settings put global disable_window_blurs 1
         resetprop_phh debug.renderengine.blur_algorithm kawase
     fi
     exit
