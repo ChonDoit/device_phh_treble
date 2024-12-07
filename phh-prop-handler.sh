@@ -335,26 +335,33 @@ if [ "$1" == "persist.sys.phh.debuggable" ];then
 fi
 
 if [ "$1" == "persist.sys.phh.sim_count" ];then
-    if [[ "$prop_value" != "ss" && "$prop_value" != "dsds" && "$prop_value" != "dsda" && "$prop_value" != "tsts" ]]; then
+    if [[ "$prop_value" != "default" && "$prop_value" != "ss" && "$prop_value" != "dsds" && "$prop_value" != "dsda" && "$prop_value" != "tsts" ]]; then
         exit 1
+    fi
+    
+    if [[ "$prop_value" == default ]];then
+        resetprop_phh -p --delete persist.radio.multisim.config
+        resetprop_phh -p --delete persist.vendor.radio.multisim.config
+        resetprop_phh -p --delete persist.vendor.radio.msimode
+        resetprop_phh --delete ro.telephony.sim.count
     fi
 
     if [[ "$prop_value" == ss ]];then
-	resetprop_phh persist.radio.multisim.config ss
+        resetprop_phh persist.radio.multisim.config ss
         resetprop_phh persist.vendor.radio.multisim.config ss
         resetprop_phh persist.vendor.radio.msimode ss
-	resetprop_phh ro.telephony.sim.count 1
+        resetprop_phh ro.telephony.sim.count 1
     fi
 
     if [[ "$prop_value" == dsds ]];then
-	resetprop_phh persist.radio.multisim.config dsds
+        resetprop_phh persist.radio.multisim.config dsds
         resetprop_phh persist.vendor.radio.multisim.config dsds
         resetprop_phh persist.vendor.radio.msimode dsds
         resetprop_phh ro.telephony.sim.count 2
     fi
 
     if [[ "$prop_value" == dsda ]];then
-	resetprop_phh persist.radio.multisim.config dsda
+        resetprop_phh persist.radio.multisim.config dsda
         resetprop_phh persist.vendor.radio.multisim.config dsda
         resetprop_phh persist.vendor.radio.msimode dsda
         resetprop_phh ro.telephony.sim.count 2
@@ -375,22 +382,34 @@ if [ "$1" == "persist.sys.phh.sf.background_blur" ];then
     fi
 
     if [[ "$prop_value" == disabled ]];then
-	resetprop_phh ro.surface_flinger.supports_background_blur 0
-	settings put global disable_window_blurs 1
-	resetprop_phh --delete debug.renderengine.blur_algorithm
+        resetprop_phh ro.surface_flinger.supports_background_blur 0
+        settings put global disable_window_blurs 1
+        resetprop_phh --delete debug.renderengine.blur_algorithm
     fi
 
     if [[ "$prop_value" == gaussian ]];then
-	resetprop_phh ro.surface_flinger.supports_background_blur 1
-	settings put global disable_window_blurs 0
+        resetprop_phh ro.surface_flinger.supports_background_blur 1
+        settings put global disable_window_blurs 0
         resetprop_phh debug.renderengine.blur_algorithm gaussian
     fi
 
     if [[ "$prop_value" == kawase ]];then
-	resetprop_phh ro.surface_flinger.supports_background_blur 1
-	settings put global disable_window_blurs 1
+        resetprop_phh ro.surface_flinger.supports_background_blur 1
+        settings put global disable_window_blurs 1
         resetprop_phh debug.renderengine.blur_algorithm kawase
     fi
     exit
 fi
 
+if [ "$1" == "persist.sys.phh.restricted_networking" ];then
+    if [[ "$prop_value" != "0" && "$prop_value" != "1" ]]; then
+        exit 1
+    fi
+
+    if [[ "$prop_value" == 0 ]];then
+        settings put global restricted_networking_mode 0
+    else
+        settings put global restricted_networking_mode 1
+    fi
+    exit
+fi

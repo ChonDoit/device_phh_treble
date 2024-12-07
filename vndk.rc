@@ -125,6 +125,9 @@ on property:persist.sys.phh.sim_count=*
 on property:persist.sys.phh.sf.background_blur=*
     exec u:r:phhsu_daemon:s0 root -- /system/bin/phh-prop-handler.sh "persist.sys.phh.sf.background_blur"
 
+on property:persist.sys.phh.restricted_networking=*
+    exec u:r:phhsu_daemon:s0 root -- /system/bin/phh-prop-handler.sh "persist.sys.phh.restricted_networking"
+
 # Set watchdog timer to 30 seconds and pet it every 10 seconds to get a 20 second margin
 service watchdogd-gsi /system/bin/watchdogd 10 20
     class core
