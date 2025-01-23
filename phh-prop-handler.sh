@@ -335,43 +335,28 @@ if [ "$1" == "persist.sys.phh.debuggable" ];then
 fi
 
 if [ "$1" == "persist.sys.phh.sim_count" ];then
-    if [[ "$prop_value" != "default" && "$prop_value" != "ss" && "$prop_value" != "dsds" && "$prop_value" != "dsda" && "$prop_value" != "tsts" ]]; then
+    if [[ "$prop_value" != "reset" && "$prop_value" != "dsds" && "$prop_value" != "dsda" && "$prop_value" != "tsts" ]]; then
         exit 1
     fi
     
-    if [[ "$prop_value" == default ]];then
+    if [[ "$prop_value" == reset ]];then
         resetprop_phh -p --delete persist.radio.multisim.config
         resetprop_phh -p --delete persist.vendor.radio.multisim.config
-        resetprop_phh -p --delete persist.vendor.radio.msimode
-        resetprop_phh --delete ro.telephony.sim.count
-    fi
-
-    if [[ "$prop_value" == ss ]];then
-        resetprop_phh persist.radio.multisim.config ss
-        resetprop_phh persist.vendor.radio.multisim.config ss
-        resetprop_phh persist.vendor.radio.msimode ss
-        resetprop_phh ro.telephony.sim.count 1
     fi
 
     if [[ "$prop_value" == dsds ]];then
         resetprop_phh persist.radio.multisim.config dsds
         resetprop_phh persist.vendor.radio.multisim.config dsds
-        resetprop_phh persist.vendor.radio.msimode dsds
-        resetprop_phh ro.telephony.sim.count 2
     fi
 
     if [[ "$prop_value" == dsda ]];then
         resetprop_phh persist.radio.multisim.config dsda
         resetprop_phh persist.vendor.radio.multisim.config dsda
-        resetprop_phh persist.vendor.radio.msimode dsda
-        resetprop_phh ro.telephony.sim.count 2
     fi
 
     if [[ "$prop_value" == tsts ]];then
         resetprop_phh persist.radio.multisim.config tsts
         resetprop_phh persist.vendor.radio.multisim.config tsts
-        resetprop_phh persist.vendor.radio.msimode tsts
-        resetprop_phh ro.telephony.sim.count 3
     fi
     exit
 fi
