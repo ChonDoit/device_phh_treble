@@ -7,7 +7,7 @@
     "MODEL": "Pixel 6",
     "FINGERPRINT": "google/oriole_beta/oriole:Baklava/BP22.250124.009/13034193:user/release-keys",   
     "VERSION.SECURITY_PATCH": "2025-02-05",
-    "VERSION.DEVICE_INITIAL_SDK_INT": "31"
+    "VERSION.DEVICE_INITIAL_SDK_INT": "31",
     "ID": "BP22.250124.009",
     "VERSION.RELEASE": "Baklava",
     "TYPE": "user",
