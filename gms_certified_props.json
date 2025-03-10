@@ -9,9 +9,8 @@
     "VERSION.SECURITY_PATCH": "2025-02-05",
     "VERSION.DEVICE_INITIAL_SDK_INT": "31",
     "ID": "BP22.250124.009",
-    "VERSION.RELEASE": "Baklava",
     "TYPE": "user",
     "TAGS": "release-keys",
     "VERSION.INCREMENTAL": "13034193",
-    "RELEASE": "15",
+    "RELEASE": "15"
 }
