@@ -1,5 +1,6 @@
 #!/system/bin/sh
 
+resetprop_phh persist.sys.spoof.hardware oriole
 resetprop_phh persist.sys.spoof.product oriole_beta
 resetprop_phh persist.sys.spoof.device oriole
 resetprop_phh persist.sys.spoof.manufacturer Google
