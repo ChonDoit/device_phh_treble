@@ -14,5 +14,5 @@ resetprop_phh persist.sys.spoof.type user
 resetprop_phh persist.sys.spoof.tags release-keys
 resetprop_phh persist.sys.spoof.incremental 13497110
 resetprop_phh persist.sys.spoof.release 16
-resetprop_phh persist.sys.spoof.sdk 31
+resetprop_phh persist.sys.spoof.ps.sdk 31
 resetprop_phh -p --delete persist.sys.spoof.auto_update
